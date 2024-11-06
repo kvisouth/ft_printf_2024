@@ -40,17 +40,17 @@ int	ft_putstr(char *str)
 	if (str)
 	{
 		while (str[i])
-			ft_putchar(str[i++]);
+			write(1, &str[i++], 1);
 		return (i);
 	}
-	return (null ou jsplu quoi);
+	return (ft_putstr("(null)"));
 }
 
 /*
 ft_putnbr sera utilisee pour '%d' '%i' et '%u'
 Pour ecrire un nombre en base 10.
 */
-void	ft_putnbr(long int nb)
+int	ft_putnbr(long int nb)
 {
 	int	cpt;
 
@@ -74,7 +74,7 @@ void	ft_putnbr(long int nb)
 ft_puthex sera utilisee pour '%p' '%x' et '%X'
 Pour ecrire un nombre en base 16.
 */
-void	ft_puthex(long int nb, char x)
+int	ft_puthex(long int nb, char x)
 {
 	int	cpt;
 
@@ -92,4 +92,20 @@ void	ft_puthex(long int nb, char x)
 			cpt += ft_putchar(nb - 10 + 'a' + (caps - 'x'));
 	}
 	return (cpt);
+}
+
+/*
+ft_putptr sera utililsee pour '%p'
+Pour ecrire une adresse memoire qui est juste 0x suivi de ptr en hexa.
+*/
+int	ft_putptr(unsigned long ptr)
+{
+	int	count;
+
+	count = 0;
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	count += ft_putstr("0x");
+	count += ft_puthex(ptr, 'x');
+	return (count);
 }
