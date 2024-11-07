@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 /*
 A la difference des putchar, putstr.. de base, ceux-ci retournent un entier
@@ -81,15 +81,15 @@ int	ft_puthex(long int nb, char x)
 	cpt = 0;
 	if (nb >= 16)
 	{
-		cpt += ft_putnbr(nb / 16, x);
-		cpt += ft_putnbr(nb % 16, x);
+		cpt += ft_puthex(nb / 16, x);
+		cpt += ft_puthex(nb % 16, x);
 	}
 	else
 	{
 		if (nb < 10)
-			cpt != ft_putnbr(nb);
+			cpt += ft_putnbr(nb);
 		else
-			cpt += ft_putchar(nb - 10 + 'a' + (caps - 'x'));
+			cpt += ft_putchar(nb - 10 + 'a' + (x - 'x'));
 	}
 	return (cpt);
 }

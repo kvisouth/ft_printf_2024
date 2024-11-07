@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 /*
 convert va rediriger l'argument ft_printf (cspdiuXx%) vers la bonne fonction
@@ -62,3 +62,17 @@ int	ft_printf(const char *str, ...)
 	va_end(arg);
 	return (count);
 }
+
+/*
+#include <stdio.h>
+int main(int ac, char **av)
+{
+	if (ac == 2)
+	{
+		printf("REAL PRINTF :%s", av[1]);
+		ft_printf("MY   PRINTF :%s", av[1]);
+		write(1, "\n", 1);
+	}
+	return (0);
+}
+*/
