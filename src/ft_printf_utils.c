@@ -74,7 +74,7 @@ int	ft_putnbr(long int nb)
 ft_puthex sera utilisee pour '%p' '%x' et '%X'
 Pour ecrire un nombre en base 16.
 */
-int	ft_puthex(long int nb, char x)
+int	ft_puthex(unsigned long nb, char x)
 {
 	int	cpt;
 
