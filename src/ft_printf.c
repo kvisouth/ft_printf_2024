@@ -42,6 +42,19 @@ int	convert(const char c, va_list arg)
 	return (count);
 }
 
+/*
+ft_printf nous introduit la notion d'arguments variadiques.
+Les '...' en argument de ft_printf, indiquent qu'il peut y avoir un nombre
+d'argument inconnu a l'avance, c'est le cas pour printf.
+
+va_list est une structure assez complexe et il nous est pas demandee d'y
+toucher, on peut la manipuler a l'aide de va_start, end, arg.. et ca suffit.
+
+va_start permet d'initialiser cette structure, la rendant utilisable pour
+la suite de notre programme.
+
+
+*/
 int	ft_printf(const char *str, ...)
 {
 	int		i;
