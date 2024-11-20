@@ -42,19 +42,7 @@ int	convert(const char c, va_list arg)
 	return (count);
 }
 
-/*
-ft_printf nous introduit la notion d'arguments variadiques.
-Les '...' en argument de ft_printf, indiquent qu'il peut y avoir un nombre
-d'argument inconnu a l'avance, c'est le cas pour printf.
-
-va_list est une structure assez complexe et il nous est pas demandee d'y
-toucher, on peut la manipuler a l'aide de va_start, end, arg.. et ca suffit.
-
-va_start permet d'initialiser cette structure, la rendant utilisable pour
-la suite de notre programme.
-
-
-*/
+/* ft_printf retourne le nombre de caractere qu'il a ecrit au total */
 int	ft_printf(const char *str, ...)
 {
 	int		i;
@@ -76,15 +64,63 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
+/* av[1] = ce qu'on veut print av[2] type */
 /*
 #include <stdio.h>
+
 int main(int ac, char **av)
 {
-	if (ac == 2)
+	if (ac == 3)
 	{
-		printf("REAL PRINTF :%s", av[1]);
-		ft_printf("MY   PRINTF :%s", av[1]);
-		write(1, "\n", 1);
+		int ret1 = 0;
+		int	ret2 = 0;
+		if (av[2][0] == 'c')
+		{
+			ret1 = printf("REAL PRINTF : %c\n", av[1][0]);
+			ret2 = ft_printf("MY   PRINTF : %c\n", av[1][0]);
+		}
+		else if(av[2][0] == 's')
+		{
+			ret1 = printf("REAL PRINTF : %s\n", av[1]);
+			ret2 = ft_printf("MY   PRINTF : %s\n", av[1]);
+		}
+		else if(av[2][0] == 'p')
+		{
+			ret1 = printf("REAL PRINTF : %p\n", av[1]);
+			ret2 = ft_printf("MY   PRINTF : %p\n", av[1]);
+		}
+		else if(av[2][0] == 'd')
+		{
+			ret1 = printf("REAL PRINTF : %d\n", atoi(av[1]));
+			ret2 = ft_printf("MY   PRINTF : %d\n", atoi(av[1]));
+		}
+		else if(av[2][0] == 'i')
+		{
+			ret1 = printf("REAL PRINTF : %i\n", atoi(av[1]));
+			ret2 = ft_printf("MY   PRINTF : %i\n", atoi(av[1]));
+		}
+		else if(av[2][0] == 'u')
+		{
+			ret1 = printf("REAL PRINTF : %u\n", atoi(av[1]));
+			ret2 = ft_printf("MY   PRINTF : %u\n", atoi(av[1]));
+		}
+		else if(av[2][0] == 'x')
+		{
+			ret1 = printf("REAL PRINTF : %x\n", atoi(av[1]));
+			ret2 = ft_printf("MY   PRINTF : %x\n", atoi(av[1]));
+		}
+		else if(av[2][0] == 'X')
+		{
+			ret1 = printf("REAL PRINTF : %X\n", atoi(av[1]));
+			ret2 = ft_printf("MY   PRINTF : %X\n", atoi(av[1]));
+		}
+		else if(av[2][0] == '%')
+		{
+			ret1 = printf("REAL PRINTF : %%\n");
+			ret2 = ft_printf("MY   PRINTF : %%\n");
+		}
+		printf("\n RETURN VALUE OF printf : %d", ret1);
+		printf("\n RETURN VALUE OF ft_printf : %d", ret2);
 	}
 	return (0);
 }
